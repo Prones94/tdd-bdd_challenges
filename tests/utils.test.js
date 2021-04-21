@@ -25,7 +25,30 @@ it("should say hello", function() {
 // 4. Finally see if you would like to refactor your code at all.
 // This is called "Red-Green-Refactor"
 // ========================================================
+it("should return the area", () => {
+  const w = 10, h = 3;
+  const area = utils.area(w,h)
+  expect(w).to.be.a("number")
+  expect(h).to.be.a("number")
+  expect(area).to.be.a("number")
+  expect(area).to.equal(30)
+})
 
+it("should return the perimeter", () => {
+  const w = 10, h = 10;
+  const result = utils.perimeter(w,h)
+  expect(w).to.be.a("number")
+  expect(h).to.be.a("number")
+  expect(result).to.be.a("number")
+  expect(result).to.equal(40)
+})
+
+it("should return the area of a circle",() => {
+  const r = 4;
+  const area = utils.circleArea(r)
+  expect(r).to.be.a("number")
+  expect(area).to.be.above(50)
+})
 
 
 
@@ -50,9 +73,23 @@ it("Should create a new (object) Item with name and price", function() {
   expect(item).to.have.property("quantity", 1)
 })
 
-it("Should return an array containing all items in cart")
+it("Should return an array containing all items in cart",() => {
+  const shoppingCart = utils.getShoppingCart()
+  expect(shoppingCart).to.be.a("array")
+})
 
-it("Should add a new item to the shopping cart")
+it("Should add a new item to the shopping cart",() => {
+  const apple = utils.createItem("apple", 0.99)
+  const ogCart = utils.getShoppingCart()
+  let ogCartSize = ogCart.length
+
+  expect(ogCart).to.be.a("array")
+  expect(apple).to.be.a("object")
+  expect(ogCartSize).to.equal(0)
+
+  utils.addItemToCart(apple)
+  
+})
 
 it("Should return the number of items in the cart")
 
